@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",  // Đảm bảo rằng mã đã biên dịch được lưu trong thư mục dist
+    "esModuleInterop": true, // Đảm bảo rằng các mô-đun ES6 có thể tương thích với CommonJS
+    "noEmit": false,     // Đảm bảo TypeScript không bỏ qua việc biên dịch
+    "isolatedModules": true, // Giúp Vite và các công cụ khác xử lý tệp một cách chính xác
+    "jsx": "react-jsx",  // Tùy chọn cho JSX nếu bạn sử dụng React
+  },
+  "include": [
+    "src/**/*"  // Đảm bảo rằng các tệp trong src sẽ được biên dịch
+  ]
+}
