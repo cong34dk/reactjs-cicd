@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React + TS</title>
     <style>
-      /* CSS: Styling */
+      /* CSS - Styling the website */
       body {
         margin: 0;
         font-family: "Arial", sans-serif;
@@ -46,7 +46,8 @@
         color: #ffe600;
       }
 
-      section {
+      .hero {
+        background: #f4f4f4;
         padding: 2rem 1rem;
         text-align: center;
       }
@@ -84,7 +85,12 @@
         background: #007bff;
       }
 
-      video {
+      .content {
+        padding: 2rem;
+        text-align: center;
+      }
+
+      .content video {
         width: 80%;
         border: 2px solid #4facfe;
         border-radius: 10px;
@@ -97,6 +103,10 @@
         text-align: center;
         padding: 1rem 0;
       }
+
+      footer p {
+        margin: 0;
+      }
     </style>
     <script type="module" crossorigin src="/reactjs-cicd/assets/index-B40nCQP8.js"></script>
   </head>
@@ -108,12 +118,11 @@
       <nav>
         <a href="#home">Home</a>
         <a href="#gallery">Gallery</a>
-        <a href="#settings">Settings</a>
         <a href="#video">Video</a>
+        <a href="#contact">Contact</a>
       </nav>
     </header>
 
-    <!-- Home Section -->
     <section id="home" class="hero">
       <h2>Welcome to Interactive Fun</h2>
       <p>Click the image to change it or press the buttons for more actions!</p>
@@ -125,16 +134,13 @@
       <div class="buttons">
         <button onclick="changeImage()">Change Image</button>
         <button onclick="showAlert()">Show Alert</button>
-        <button onclick="zoomImage('in')">Zoom In</button>
-        <button onclick="zoomImage('out')">Zoom Out</button>
       </div>
     </section>
 
-    <!-- Gallery Section -->
     <section id="gallery" class="content">
       <h2>Gallery</h2>
       <p>Control the video below:</p>
-      <video id="myVideo" controls>
+      <video id="myVideo" width="600" controls>
         <source
           src="https://www.w3schools.com/html/mov_bbb.mp4"
           type="video/mp4"
@@ -144,111 +150,46 @@
       <div class="buttons">
         <button onclick="playVideo()">Play Video</button>
         <button onclick="pauseVideo()">Pause Video</button>
-        <button onclick="changeSpeed(1.5)">Speed Up</button>
-        <button onclick="changeSpeed(0.5)">Slow Down</button>
       </div>
     </section>
 
-    <!-- Settings Section -->
-    <section id="settings" class="content">
-      <h2>Settings</h2>
-      <p>Explore more interactions below:</p>
-      <div class="buttons">
-        <button onclick="toggleMode()">Toggle Mode</button>
-      </div>
-    </section>
-
-    <!-- Video Section -->
-    <section id="video" class="content">
-      <h2>Music Videos</h2>
-      <iframe
-        width="771"
-        height="514"
-        src="https://www.youtube.com/embed/abPmZCZZrFA"
-        title="Đừng Làm Trái Tim Anh Đau"
-        frameborder="0"
-        allowfullscreen
-      ></iframe>
-      <iframe
-        width="914"
-        height="514"
-        src="https://www.youtube.com/embed/Yp-sVNTXSB0"
-        title="Cô Gái M52"
-        frameborder="0"
-        allowfullscreen
-      ></iframe>
-      <iframe
-        width="914"
-        height="514"
-        src="https://www.youtube.com/embed/gOtfJ151ue4"
-        title="Tết Đong Đầy"
-        frameborder="0"
-        allowfullscreen
-      ></iframe>
-    </section>
-
-    <!-- Footer -->
     <footer>
       <p>&copy; 2025 Interactive Website. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript -->
     <script>
-      const images = [
-        "https://i.pinimg.com/736x/0b/cf/7a/0bcf7a52cfde7f748c5fa183c7e51ed8.jpg",
-        "https://i.pinimg.com/736x/a6/19/81/a619819491876c82d829eea263403f74.jpg",
-        "https://i.pinimg.com/736x/9d/f4/ef/9df4efa77bbda3b2fd281a332067ac8c.jpg",
-        "https://i.pinimg.com/736x/2b/bf/b4/2bbfb4b7f7c5a59bbc0aa8fff0aae5d3.jpg",
-      ];
-      let currentIndex = 0;
+  // JavaScript - Adding interactivity
 
-      function changeImage() {
-        const image = document.getElementById("mainImage");
-        currentIndex = (currentIndex + 1) % images.length;
-        image.src = images[currentIndex];
-      }
+  let currentIndex = 0; // Index to track the current image
+  const images = [
+    "https://i.pinimg.com/736x/0b/cf/7a/0bcf7a52cfde7f748c5fa183c7e51ed8.jpg",
+    "https://i.pinimg.com/736x/a6/19/81/a619819491876c82d829eea263403f74.jpg",
+    "https://i.pinimg.com/736x/9d/f4/ef/9df4efa77bbda3b2fd281a332067ac8c.jpg",
+    "https://i.pinimg.com/736x/2b/bf/b4/2bbfb4b7f7c5a59bbc0aa8fff0aae5d3.jpg"
+  ];
 
+  // Change the image when the button is clicked
+  function changeImage() {
+    const image = document.getElementById("mainImage");
+    currentIndex = (currentIndex + 1) % images.length; // Increment index and loop back to 0
+    image.src = images[currentIndex];
+  }
+
+      // Show an alert message
       function showAlert() {
         alert("You clicked the button! 🎉");
       }
 
+      // Play the video
       function playVideo() {
-        document.getElementById("myVideo").play();
-      }
-
-      function pauseVideo() {
-        document.getElementById("myVideo").pause();
-      }
-
-  // Đặt chế độ mặc định là light
-  let isDarkMode = false;
-
-  function toggleMode() {
-    // Toggle chế độ giữa light và dark
-    isDarkMode = !isDarkMode;
-    document.body.style.background = isDarkMode ? "#333" : "#f9f9f9";
-    document.body.style.color = isDarkMode ? "#fff" : "#333";
-
-    // Cập nhật tên nút tương ứng
-    document.getElementById("toggleModeBtn").innerText = isDarkMode
-      ? "Switch to Light Mode"
-      : "Switch to Dark Mode";
-  }
-
-      function zoomImage(direction) {
-        const image = document.getElementById("mainImage");
-        const currentScale = parseFloat(
-          image.style.transform.replace("scale(", "").replace(")", "")
-        ) || 1;
-        image.style.transform =
-          direction === "in"
-            ? `scale(${currentScale + 0.1})`
-            : `scale(${currentScale - 0.1})`;
-      }
-
-      function changeSpeed(speed) {
         const video = document.getElementById("myVideo");
-        video.playbackRate = speed;
+        video.play();
+      }
+
+      // Pause the video
+      function pauseVideo() {
+        const video = document.getElementById("myVideo");
+        video.pause();
       }
     </script>
 
