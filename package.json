@@ -1,9 +1,9 @@
 {
   "name": "reactjs-cicd",
+  "homepage": "https://cong34dk.github.io/reactjs-cicd/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://cong34dk.github.io/reactjs-cicd/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "test": "jest",
     "deploy": "gh-pages -d dist",
-    "predeploy": "vite build"
+    "predeploy": "npm run build"
   },
   "dependencies": {
     "react": "^18.3.1",

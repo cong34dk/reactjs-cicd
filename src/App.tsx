@@ -10,6 +10,7 @@ const App: React.FC = () => {
   return (
     <div>
       <h1>DEMO</h1>
+      <p>Úi sời</p>
       <p>Hello, React!</p>
       <p>Good Job</p>
       <p>Count: {count}</p>
