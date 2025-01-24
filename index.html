@@ -1,18 +1,197 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/reactjs-cicd/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React + TS</title>
+    <style>
+      /* CSS - Styling the website */
+      body {
+        margin: 0;
+        font-family: "Arial", sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: #f9f9f9;
+      }
+
+      header {
+        background: linear-gradient(to right, #4facfe, #00f2fe);
+        color: #fff;
+        padding: 1rem 0;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+      }
+
+      nav {
+        margin-top: 0.5rem;
+      }
+
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 1rem;
+        font-size: 1rem;
+        transition: color 0.3s ease;
+      }
+
+      nav a:hover {
+        color: #ffe600;
+      }
+
+      .hero {
+        background: #f4f4f4;
+        padding: 2rem 1rem;
+        text-align: center;
+      }
+
+      .hero img {
+        max-width: 800px;
+        height: 400px;
+        border-radius: 10px;
+        margin-top: 1rem;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+
+      .hero img:hover {
+        transform: scale(1.05);
+      }
+
+      .buttons {
+        margin-top: 1rem;
+      }
+
+      .buttons button {
+        background: #4facfe;
+        color: #fff;
+        padding: 0.7rem 1.5rem;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        margin: 0 0.5rem;
+      }
+
+      .buttons button:hover {
+        background: #007bff;
+      }
+
+      .content {
+        padding: 2rem;
+        text-align: center;
+      }
+
+      .content video {
+        width: 80%;
+        border: 2px solid #4facfe;
+        border-radius: 10px;
+        margin-top: 1rem;
+      }
+
+      footer {
+        background: #333;
+        color: #fff;
+        text-align: center;
+        padding: 1rem 0;
+      }
+
+      footer p {
+        margin: 0;
+      }
+    </style>
     <script type="module" crossorigin src="/reactjs-cicd/assets/index-B40nCQP8.js"></script>
   </head>
   <body>
     <div id="root"></div>
-    <p>Hello ae ơi</p>
-    <p>Test thôi bạn ơi</p>
-    <p>Happy</p>
-    <img src="https://wellavn.com/wp-content/uploads/2024/11/anh-gai-xinh-2k5-7.jpg" alt="">
-    <p>Đã okay</p>
+    <!-- HTML - Structure of the website -->
+    <header>
+      <h1>Interactive Website</h1>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#video">Video</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section id="home" class="hero">
+      <h2>Welcome to Interactive Fun</h2>
+      <p>Click the image to change it or press the buttons for more actions!</p>
+      <img
+        id="mainImage"
+        src="https://i.pinimg.com/736x/0b/cf/7a/0bcf7a52cfde7f748c5fa183c7e51ed8.jpg"
+        alt="Sample Image"
+      />
+      <div class="buttons">
+        <button onclick="changeImage()">Change Image</button>
+        <button onclick="showAlert()">Show Alert</button>
+      </div>
+    </section>
+
+    <section id="gallery" class="content">
+      <h2>Gallery</h2>
+      <p>Control the video below:</p>
+      <video id="myVideo" width="600" controls>
+        <source
+          src="https://www.w3schools.com/html/mov_bbb.mp4"
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video>
+      <div class="buttons">
+        <button onclick="playVideo()">Play Video</button>
+        <button onclick="pauseVideo()">Pause Video</button>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Interactive Website. All rights reserved.</p>
+    </footer>
+
+    <script>
+  // JavaScript - Adding interactivity
+
+  let currentIndex = 0; // Index to track the current image
+  const images = [
+    "https://i.pinimg.com/736x/0b/cf/7a/0bcf7a52cfde7f748c5fa183c7e51ed8.jpg",
+    "https://i.pinimg.com/736x/a6/19/81/a619819491876c82d829eea263403f74.jpg",
+    "https://i.pinimg.com/736x/9d/f4/ef/9df4efa77bbda3b2fd281a332067ac8c.jpg",
+    "https://i.pinimg.com/736x/2b/bf/b4/2bbfb4b7f7c5a59bbc0aa8fff0aae5d3.jpg"
+  ];
+
+  // Change the image when the button is clicked
+  function changeImage() {
+    const image = document.getElementById("mainImage");
+    currentIndex = (currentIndex + 1) % images.length; // Increment index and loop back to 0
+    image.src = images[currentIndex];
+  }
+
+      // Show an alert message
+      function showAlert() {
+        alert("You clicked the button! 🎉");
+      }
+
+      // Play the video
+      function playVideo() {
+        const video = document.getElementById("myVideo");
+        video.play();
+      }
+
+      // Pause the video
+      function pauseVideo() {
+        const video = document.getElementById("myVideo");
+        video.pause();
+      }
+    </script>
+
   </body>
 </html>
