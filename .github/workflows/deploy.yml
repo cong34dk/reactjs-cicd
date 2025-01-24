@@ -27,4 +27,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: dist
+          publish_dir: dist  # Đây là thư mục build của Vite, sẽ được deploy lên root của nhánh `production`
+          destination_dir: ./ # Đảm bảo rằng các file từ `dist` sẽ được copy lên thư mục root của nhánh `production`
